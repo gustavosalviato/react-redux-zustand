@@ -2,10 +2,11 @@
 export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
-    fontFamily: {
-      sans: ["Inter", "sans"],
+    extend: {
+      fontFamily: {
+        sans: ["Inter", "sans"],
+      },
     },
-    extend: {},
   },
-  plugins: [],
+  plugins: [require("tailwind-scrollbar")],
 };
