@@ -1,4 +1,4 @@
-import { MessageCircle } from "lucide-react";
+import { MessageCircle } from 'lucide-react'
 
 export function Header() {
   return (
@@ -10,7 +10,8 @@ export function Header() {
 
       <button className="bg-indigo-500 rounded px-3 py-2 font-medium flex items-center justify-center gap-2 transition-colors duration-300 hover:bg-indigo-600">
         <MessageCircle size={18} />
-        Deixar feedback</button>
+        Deixar feedback
+      </button>
     </div>
   )
 }
