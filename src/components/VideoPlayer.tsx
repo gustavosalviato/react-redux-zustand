@@ -7,6 +7,10 @@ export function VideoPlayer() {
 
   const { currentLesson } = useCurrentLesson()
 
+  if (!currentLesson) {
+    return null
+  }
+
   function handleEndeVideo() {
     dispatch(next())
   }
