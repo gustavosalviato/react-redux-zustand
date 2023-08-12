@@ -2,13 +2,11 @@ import { useEffect } from 'react'
 import { Header } from '../components/Header'
 import { VideoPlayer } from '../components/VideoPlayer'
 import { Module } from '../components/Module'
-import { useAppSelector } from '../store'
-import { useCurrentLesson, start } from '../store/slices/player'
-import { api } from '../lib/axios'
-import { useDispatch } from 'react-redux'
+import { useAppDispatch, useAppSelector } from '../store'
+import { useCurrentLesson, loadCourses } from '../store/slices/player'
 
 export function Player() {
-  const dispatch = useDispatch()
+  const dispatch = useAppDispatch()
   const modules = useAppSelector((state) => {
     return state.player.course?.modules
   })
@@ -16,9 +14,7 @@ export function Player() {
   const { currentLesson } = useCurrentLesson()
 
   useEffect(() => {
-    api.get('/courses/1').then((response) => {
-      dispatch(start(response.data))
-    })
+    dispatch(loadCourses())
   }, [])
 
   useEffect(() => {
