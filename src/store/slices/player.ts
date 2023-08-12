@@ -1,6 +1,8 @@
 import { PayloadAction, createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 import { useAppSelector } from '..'
 import { api } from '../../lib/axios'
+import { build } from 'vite'
+import { z } from 'vitest/dist/types-3c7dbfa5.js'
 
 interface Course {
   id: number
@@ -19,12 +21,14 @@ export interface PlayerState {
   course: Course | null
   currentModuleIndex: number
   currentLessonIndex: number
+  isLoading: boolean
 }
 
 const initialState: PlayerState = {
   course: null,
   currentModuleIndex: 0,
   currentLessonIndex: 0,
+  isLoading: false,
 }
 
 export const loadCourses = createAsyncThunk('player/load', async () => {
@@ -64,8 +68,12 @@ export const playerSlice = createSlice({
     },
   },
   extraReducers(builder) {
+    builder.addCase(loadCourses.pending, (state) => {
+      state.isLoading = true
+    })
     builder.addCase(loadCourses.fulfilled, (state, action) => {
       state.course = action.payload
+      state.isLoading = false
     })
   },
 })
