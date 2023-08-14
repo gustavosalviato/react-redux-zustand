@@ -1,11 +1,14 @@
 import ReactPlayer from 'react-player'
-import { next, useCurrentLesson } from '../store/slices/player'
-import { useAppDispatch, useAppSelector } from '../store'
 import { Loader } from 'lucide-react'
+import { useCurrentLesson, useStore } from '../zustand-store'
 
 export function VideoPlayer() {
-  const isLoading = useAppSelector((state) => state.player.isLoading)
-  const dispatch = useAppDispatch()
+  const { isLoading, next } = useStore((state) => {
+    return {
+      next: state.next,
+      isLoading: state.isLoading,
+    }
+  })
 
   const { currentLesson } = useCurrentLesson()
 
@@ -14,7 +17,7 @@ export function VideoPlayer() {
   }
 
   function handleEndeVideo() {
-    dispatch(next())
+    next()
   }
   return (
     <div className="bg-zinc-950 w-full aspect-video">

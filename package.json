@@ -9,7 +9,7 @@
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
     "test": "vitest",
-    "server": "json-server server.json -w -d 1000"
+    "server": "json-server server.json -w -d 5000"
   },
   "dependencies": {
     "@radix-ui/react-collapsible": "^1.0.3",
@@ -21,7 +21,8 @@
     "react-dom": "^18.2.0",
     "react-player": "^2.12.0",
     "react-redux": "^8.1.2",
-    "tailwind-scrollbar": "^3.0.5"
+    "tailwind-scrollbar": "^3.0.5",
+    "zustand": "^4.4.1"
   },
   "devDependencies": {
     "@rocketseat/eslint-config": "^2.1.0",

@@ -2,19 +2,20 @@ import { useEffect } from 'react'
 import { Header } from '../components/Header'
 import { VideoPlayer } from '../components/VideoPlayer'
 import { Module } from '../components/Module'
-import { useAppDispatch, useAppSelector } from '../store'
-import { useCurrentLesson, loadCourses } from '../store/slices/player'
+import { useCurrentLesson, useStore } from '../zustand-store'
 
 export function Player() {
-  const dispatch = useAppDispatch()
-  const modules = useAppSelector((state) => {
-    return state.player.course?.modules
+  const { modules, load } = useStore((state) => {
+    return {
+      modules: state.course?.modules,
+      load: state.load,
+    }
   })
 
   const { currentLesson } = useCurrentLesson()
 
   useEffect(() => {
-    dispatch(loadCourses())
+    load()
   }, [])
 
   useEffect(() => {

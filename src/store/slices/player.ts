@@ -1,8 +1,6 @@
 import { PayloadAction, createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 import { useAppSelector } from '..'
 import { api } from '../../lib/axios'
-import { build } from 'vite'
-import { z } from 'vitest/dist/types-3c7dbfa5.js'
 
 interface Course {
   id: number
